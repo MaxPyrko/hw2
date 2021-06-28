@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_REPO = 'wordprove/hw2py'
-        TAG = 2.0.0
+        TAG = '2.0.0'
         // TAG = sh(script: "jq -r .version package.json", returnStdout: true).trim()
     }
 
