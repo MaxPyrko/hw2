@@ -13,15 +13,14 @@ pipeline {
         stage('Tests') {
             agent {
                 docker {
-                    image 'node:14-alpine'
+                    image 'maven:3.6.0-jdk-11-slim'
                     label 'docker'
                 }
                 
             }
             steps {
                 sh '''
-                npm ci
-                npm test
+                mvn test
                 '''
             }
 
