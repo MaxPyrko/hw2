@@ -1,0 +1,8 @@
+appName: hw2py-docker-java
+
+spec:
+  restartPolicy: Never  
+
+ttlSecAF: 5
+
+image: wordprove/hw2py:2.0.0 

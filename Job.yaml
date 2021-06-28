@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hw2py-docker-java
+  # namespace: pyrko
+spec:
+  ttlSecondsAfterFinished: 5
+  template:   
+    spec:
+      containers:
+      - name: hw2py-docker-java
+        image: wordprove/hw2py:2.0.0        
+      restartPolicy: Never      

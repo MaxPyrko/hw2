@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.appName }}
+  # namespace: pyrko
+spec:
+  ttlSecondsAfterFinished: {{ .Values.ttlSecAF }}
+  template:   
+    spec:
+      containers:
+      - name: {{ .Values.appName }}
+        image: {{ .Values.image }}        
+      {{ toYaml .Values.spec }}
