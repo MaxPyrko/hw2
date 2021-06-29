@@ -10,31 +10,31 @@ pipeline {
     }
 
     stages {
-        stage('Tests') {
-            agent {
-                docker {
-                    image 'maven:3.6.0-jdk-11-slim'
-                    label 'docker'
-                }
+        // stage('Tests') {
+        //     agent {
+        //         docker {
+        //             image 'maven:3.6.0-jdk-11-slim'
+        //             label 'docker'
+        //         }
                 
-            }
-            steps {
-                sh '''
-                mvn test
-                '''
-            }
+        //     }
+        //     steps {
+        //         sh '''
+        //         mvn test
+        //         '''
+        //     }
 
-            post {
-                always {
-                    recordIssues(
-                        enabledForFailure: true, 
-                        tools: [
-                            junitParser(pattern: 'target/surefire-reports/*.xml')
-                        ]
-                    )
-                }
-            }
-        }
+        //     post {
+        //         always {
+        //             recordIssues(
+        //                 enabledForFailure: true, 
+        //                 tools: [
+        //                     junitParser(pattern: 'target/surefire-reports/*.xml')
+        //                 ]
+        //             )
+        //         }
+        //     }
+        // }
     
         // stage('Build') {
         //     steps {
