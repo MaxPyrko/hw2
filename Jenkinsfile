@@ -77,7 +77,8 @@ pipeline {
             }
             steps {
                 sh '''
-                trivy $IMAGE_REPO:$TAG
+                docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+                -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy wordprove/hw2py:2.0.0
                 '''
             }
 
