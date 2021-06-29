@@ -35,6 +35,7 @@ pipeline {
                 }
             }
         }
+    
         // stage('Build') {
         //     steps {
         //         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
@@ -66,5 +67,31 @@ pipeline {
         //         }
         //     }
         // }
+    }
+    stages {
+        stage('ScanTrivy') {
+            agent {
+                docker {
+                    image 'bitnami/trivy:latest'
+                    label 'docker'
+                }                
+            }
+            steps {
+                sh '''
+                trivy $IMAGE_REPO:$TAG
+                '''
+            }
+
+            // post {
+            //     always {
+            //         recordIssues(
+            //             enabledForFailure: true, 
+            //             tools: [
+            //                 junitParser(pattern: 'target/surefire-reports/*.xml')
+            //             ]
+            //         )
+            //     }
+            // }
+        }
     }
 }
