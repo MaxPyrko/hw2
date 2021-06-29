@@ -67,8 +67,7 @@ pipeline {
         //         }
         //     }
         // }
-    }
-    stages {
+    
         stage('ScanTrivy') {
             agent {
                 docker {
