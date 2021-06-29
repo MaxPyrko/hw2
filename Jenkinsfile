@@ -24,16 +24,16 @@ pipeline {
                 '''
             }
 
-            post {
-                always {
-                    recordIssues(
-                        enabledForFailure: true, 
-                        tools: [
-                            junitParser(pattern: 'test-results.xml')
-                        ]
-                    )
-                }
-            }
+            // post {
+            //     always {
+            //         recordIssues(
+            //             enabledForFailure: true, 
+            //             tools: [
+            //                 junitParser(pattern: 'test-results.xml')
+            //             ]
+            //         )
+            //     }
+            // }
         }
         // stage('Build') {
         //     steps {
