@@ -71,7 +71,7 @@ pipeline {
         stage('ScanTrivy') {
             agent {
                 docker {
-                    image 'bitnami/trivy:latest'
+                    image 'aquasec/trivy:latest-amd64'
                     label 'docker'
                 }                
             }
