@@ -77,7 +77,7 @@ pipeline {
             }
             steps {
                 sh '''
-                trivy wordprove/hw2py:latest
+                printenv
                 '''
             }
 
