@@ -36,18 +36,18 @@ pipeline {
         //     }
         // }
     
-        // stage('Build') {
-        //     steps {
-        //         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-        //             sh '''
-        //             printenv
-        //             docker build -t $IMAGE_REPO:$TAG-$GIT_COMMIT -t $IMAGE_REPO:latest ./
-        //             docker push $IMAGE_REPO:$TAG-$GIT_COMMIT
-        //             docker push $IMAGE_REPO:latest
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh '''
+                    printenv
+                    docker build -t $IMAGE_REPO:$TAG-$GIT_COMMIT -t $IMAGE_REPO:latest ./
+                    docker push $IMAGE_REPO:$TAG-$GIT_COMMIT
+                    docker push $IMAGE_REPO:latest
+                    '''
+                }
+            }
+        }
         // stage('Deploy') {
         //     environment {
         //         NAMESPACE = 'pyrko'
